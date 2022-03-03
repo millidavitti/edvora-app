@@ -3,24 +3,26 @@ import Filters from "./Filters";
 
 // Assets
 import filter from "../assets/icons/filters.png";
+import UtilityBtn from "./UtilityBtn";
 export default function UtilityBar(props) {
-  const { states, cities } = props;
+  const { states, cities, utilityBtns, toggleRides } = props;
   const [filters, setFilters] = useState(false);
   function toggleFilter() {
     setFilters((pre) => !pre);
   }
+
   return (
     <div className='utility'>
-      <div className='sort-rides'>
-        <button className='sort-btn'>Nearest rides</button>
-        <button className='sort-btn'>
-          Upcoming rides <span>(2)</span>
-        </button>
-        <button className='sort-btn'>
-          Past rides <span>(4)</span>
-        </button>
-      </div>
-
+      {utilityBtns.map((btn) => (
+        <UtilityBtn
+          key={btn.id}
+          id={btn.id}
+          text={btn.text}
+          left={btn.left}
+          isActive={btn.isActive}
+          toggleRides={toggleRides}
+        />
+      ))}
       <button onClick={toggleFilter}>
         <img src={filter} alt='filter' />
       </button>

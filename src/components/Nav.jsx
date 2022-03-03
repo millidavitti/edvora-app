@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Assets
-import avatar from "../assets/images/avatar.jfif";
-export default function Nav() {
+// import avatar from "../assets/images/avatar.jfif";
+export default function Nav(props) {
+  const { name, url } = props;
   return (
     <header>
       <nav>
         <h2>Edvora</h2>
         <div className='user'>
-          <p>Donald Abua</p>
+          <p>{name}</p>
           <div className='avatar'>
-            <img src={avatar} alt='donald abua' />
+            <img src={url} alt={name} />
           </div>
         </div>
       </nav>

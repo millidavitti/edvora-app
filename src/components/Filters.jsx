@@ -4,8 +4,12 @@ import State from "./State";
 
 export default function Filters(props) {
   const { states, cities } = props;
-  const renderStates = states.map((state) => <State state={state} />);
-  const renderCities = cities.map((city) => <City city={city} />);
+  const renderStates = states.map((state, index) => (
+    <State key={index} state={state} />
+  ));
+  const renderCities = cities.map((city, index) => (
+    <City key={index} city={city} />
+  ));
 
   return (
     <div className='filters'>

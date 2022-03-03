@@ -19,6 +19,10 @@
   background-color: var(--body);
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .app-wrap {
   padding: 0 3%;
 }
@@ -78,6 +82,9 @@ button {
   color: var(--text);
   cursor: pointer;
 }
+.sort-btn {
+  padding-bottom: 5px;
+}
 
 /* Rides */
 .grid {
@@ -98,13 +105,13 @@ button {
 
 .map {
   grid-column: 1/2;
-  outline: auto;
   width: 100%;
   height: 170px;
   margin: auto 0;
 }
 
 .map > img {
+  border-radius: 10px;
   object-fit: cover;
 }
 

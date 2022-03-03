@@ -1,7 +1,6 @@
 import React from "react";
 
-// Assets
-// import map from "../assets/images/map.png";
+import Nearest from "./Nearest";
 
 export default function Rides(props) {
   const {
@@ -13,6 +12,7 @@ export default function Rides(props) {
     state,
     stationPath,
   } = props;
+
   return (
     <div className='rides grid'>
       <div className='map'>
@@ -35,6 +35,7 @@ export default function Rides(props) {
           Distance: <span>0</span>
         </p>
       </div>
+
       <div className='location-info'>
         <p>{city}</p>
         <p>{state}</p>
