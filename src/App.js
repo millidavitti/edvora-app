@@ -193,7 +193,7 @@ export default function App() {
     />
   ));
 
-  const active = utilityBtns.find((btns) => btns.isActive);
+  const active = utilityBtns.find((btn) => btn.isActive);
   let render;
   if (active.id === "near") render = renderNearest;
   if (active.id === "upcoming") render = renderUpcoming;

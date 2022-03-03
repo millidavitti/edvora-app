@@ -2,5 +2,12 @@ import React from "react";
 
 export default function State(props) {
   const { state } = props;
-  return <option value={state}>{state}</option>;
+  function stateFilter() {
+    console.log(state);
+  }
+  return (
+    <option value={state} onClick={stateFilter}>
+      {state}
+    </option>
+  );
 }
