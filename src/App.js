@@ -6,13 +6,14 @@ import Upcoming from "./components/Upcoming";
 import UtilityBar from "./components/UtilityBar";
 
 export default function App() {
-  // const [rideData, setRideData] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [nearest, setNearest] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [past, setPast] = useState([]);
   const [user, setUser] = useState({});
+  const [filterState, setFilterState] = useState("");
+  const [filterCity, setFilterCity] = useState("");
   const [utilityBtns, setUtilityBtns] = useState([
     {
       id: "near",
@@ -199,6 +200,14 @@ export default function App() {
   if (active.id === "upcoming") render = renderUpcoming;
   if (active.id === "past") render = renderPast;
 
+  const filteredState = render.filter((ride) => ride.state === filterState);
+  const filteredCity = render.filter((ride) => ride.city === filterCity);
+
+  // Filter Check
+  const [filterCheck, setFilterCheck] = useState({ state: false, city: false });
+
+  console.log(filterCheck);
+
   return (
     <main className='container'>
       <Nav name={user.name} url={user.url} />
@@ -208,6 +217,11 @@ export default function App() {
           cities={cities}
           toggleRides={toggleRides}
           utilityBtns={utilityBtns}
+          filterState={filterState}
+          setFilterState={setFilterState}
+          filterCity={filterCity}
+          setFilterCity={setFilterCity}
+          setFilterCheck={setFilterCheck}
         />
         {render}
       </div>

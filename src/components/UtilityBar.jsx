@@ -5,11 +5,36 @@ import Filters from "./Filters";
 import filter from "../assets/icons/filters.png";
 import UtilityBtn from "./UtilityBtn";
 export default function UtilityBar(props) {
-  const { states, cities, utilityBtns, toggleRides } = props;
+  const {
+    states,
+    cities,
+    utilityBtns,
+    toggleRides,
+    filterState,
+    setFilterState,
+    filterCity,
+    setFilterCity,
+    setFilterCheck,
+  } = props;
   const [filters, setFilters] = useState(false);
   function toggleFilter() {
     setFilters((pre) => !pre);
   }
+
+  // if (filterState)
+  //   setFilterCheck((pre) => {
+  //     return {
+  //       ...pre,
+  //       state: true,
+  //     };
+  //   });
+  // if (filterCity)
+  //   setFilterCheck((pre) => {
+  //     return {
+  //       ...pre,
+  //       city: true,
+  //     };
+  //   });
 
   return (
     <div className='utility'>
@@ -26,7 +51,18 @@ export default function UtilityBar(props) {
       <button onClick={toggleFilter}>
         <img src={filter} alt='filter' />
       </button>
-      {filters && <Filters states={states} cities={cities} />}
+
+      {
+        <Filters
+          states={states}
+          cities={cities}
+          filters={filters}
+          filterState={filterState}
+          setFilterState={setFilterState}
+          filterCity={filterCity}
+          setFilterCity={setFilterCity}
+        />
+      }
     </div>
   );
 }

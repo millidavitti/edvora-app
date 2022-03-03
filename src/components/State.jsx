@@ -1,10 +1,12 @@
 import React from "react";
 
 export default function State(props) {
-  const { state } = props;
+  const { state, setFilterState } = props;
+
   function stateFilter() {
-    console.log(state);
+    setFilterState(state);
   }
+
   return (
     <option value={state} onClick={stateFilter}>
       {state}

@@ -1,6 +1,13 @@
 import React from "react";
 
 export default function City(props) {
-  const { city } = props;
-  return <option value={city}>{city}</option>;
+  const { city, setFilterCity } = props;
+  function cityFilter() {
+    setFilterCity(city);
+  }
+  return (
+    <option value={city} onClick={cityFilter}>
+      {city}
+    </option>
+  );
 }
