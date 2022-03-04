@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Filters from "./Filters";
 
 // Assets
-import filter from "../assets/icons/filters.png";
+import filterIcon from "../assets/icons/filters.png";
 import UtilityBtn from "./UtilityBtn";
 export default function UtilityBar(props) {
   const {
@@ -14,27 +14,15 @@ export default function UtilityBar(props) {
     setFilterState,
     filterCity,
     setFilterCity,
-    setFilterCheck,
+    setRender,
+    filterStateNow,
+    renderFilteredState,
+    renderFilteredCity,
   } = props;
-  const [filters, setFilters] = useState(false);
+  const [filterBoolean, setFilterBoolean] = useState(false);
   function toggleFilter() {
-    setFilters((pre) => !pre);
+    setFilterBoolean((pre) => !pre);
   }
-
-  // if (filterState)
-  //   setFilterCheck((pre) => {
-  //     return {
-  //       ...pre,
-  //       state: true,
-  //     };
-  //   });
-  // if (filterCity)
-  //   setFilterCheck((pre) => {
-  //     return {
-  //       ...pre,
-  //       city: true,
-  //     };
-  //   });
 
   return (
     <div className='utility'>
@@ -49,18 +37,23 @@ export default function UtilityBar(props) {
         />
       ))}
       <button onClick={toggleFilter}>
-        <img src={filter} alt='filter' />
+        <img src={filterIcon} alt='filter' />
       </button>
 
       {
         <Filters
           states={states}
           cities={cities}
-          filters={filters}
+          filterStateNow={filterStateNow}
           filterState={filterState}
           setFilterState={setFilterState}
           filterCity={filterCity}
           setFilterCity={setFilterCity}
+          utilityBtns={utilityBtns}
+          setRender={setRender}
+          filterBoolean={filterBoolean}
+          renderFilteredState={renderFilteredState}
+          renderFilteredCity={renderFilteredCity}
         />
       }
     </div>

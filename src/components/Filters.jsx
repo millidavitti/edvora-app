@@ -6,33 +6,31 @@ export default function Filters(props) {
   const {
     states,
     cities,
-    filters,
-    filterState,
     setFilterState,
-    filterCity,
     setFilterCity,
+    filterBoolean,
+    setRender,
+    renderFilteredState,
+    renderFilteredCity,
   } = props;
   const renderStates = states.map((state, index) => (
     <State
       key={index}
       state={state}
-      filterState={filterState}
       setFilterState={setFilterState}
+      renderFilteredState={renderFilteredState}
+      renderFilteredCity={renderFilteredCity}
+      setRender={setRender}
     />
   ));
   const renderCities = cities.map((city, index) => (
-    <City
-      key={index}
-      city={city}
-      filterCity={filterCity}
-      setFilterCity={setFilterCity}
-    />
+    <City key={index} city={city} setFilterCity={setFilterCity} setRender />
   ));
 
   const showFilter = {
-    transform: filters ? "translateY(0)" : "translateY(-50px)",
-    opacity: filters ? "1" : "0",
-    pointerEvents: filters ? "initial" : "none",
+    transform: filterBoolean ? "translateY(0)" : "translateY(-50px)",
+    opacity: filterBoolean ? "1" : "0",
+    pointerEvents: filterBoolean ? "initial" : "none",
   };
 
   return (
